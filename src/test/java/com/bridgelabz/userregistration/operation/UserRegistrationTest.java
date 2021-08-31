@@ -38,7 +38,7 @@ public class UserRegistrationTest {
 	@Test
 	public void givePassword_whenProper_ShouldReturnTrue() {
 		UserRegistration validater=new UserRegistration();
-		boolean result=validater.validatePassword("G");
+		boolean result=validater.validatePassword("Ganesh");
 		Assert.assertTrue(result);
 	}
 }

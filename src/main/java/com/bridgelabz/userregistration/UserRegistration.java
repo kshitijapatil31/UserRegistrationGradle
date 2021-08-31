@@ -11,7 +11,7 @@ public class UserRegistration {
 	
 	private static final String MOBILE="^[+91]{3}\\s{0,1}[0-9]{10}";
 	
-	private static final String PASSWORD="[a-zA-z]{8,15}";
+	private static final String PASSWORD="(?=.*[A-Z])";
 	
 	public boolean validateFirstName(String firstName){
 		Pattern pattern =Pattern.compile(FIRST_NAME_PATTERN);
