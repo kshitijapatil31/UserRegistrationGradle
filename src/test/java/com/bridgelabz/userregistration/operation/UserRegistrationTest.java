@@ -22,4 +22,10 @@ public class UserRegistrationTest {
 		boolean result=validater.validateLastName("Patil");
 		Assert.assertEquals(true, result);
 	}
+	@Test
+	public void giveEmail_whenProper_ShouldReturnTrue() {
+		UserRegistration validater=new UserRegistration();
+		boolean result=validater.validateLastName("abc.xyz@bridgelabz.co.in");
+		Assert.assertEquals(true, result);
+	}
 }
