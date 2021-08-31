@@ -34,4 +34,11 @@ public class UserRegistrationTest {
 		boolean result=validater.validateMobile("+91 9919819801");
 		Assert.assertTrue(result);
 	}
+	
+	@Test
+	public void givePassword_whenProper_ShouldReturnTrue() {
+		UserRegistration validater=new UserRegistration();
+		boolean result=validater.validatePassword("rttyuiopp");
+		Assert.assertTrue(result);
+	}
 }
