@@ -1,47 +1,49 @@
 package com.bridgelabz.userregistration.operation;
 
 import java.util.Arrays;
-import java.util.List;
+import java.util.Collection;
+
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
+
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
+
 
 
 import com.bridgelabz.userregistration.EmailParameterized;
-import com.bridgelabz.userregistration.UserRegistration;
+
 
 @RunWith(Parameterized.class)
 public class EmailParameterizedTest {
+	private String email;
+	private boolean result;
+	private EmailParameterized emailParameterized;
 	
+	public EmailParameterizedTest(String email,boolean result) {
+		this.email=email;
+		this.result=result;
+	}
+	@Before
+	public void initialize() {
+		emailParameterized=new EmailParameterized();
+	}
+	
+	@Parameterized.Parameters
+	public static Collection emailInput() {
+		return Arrays.asList(new Object[][]{{"abc@yahoo.com",true},{ "abc-100@yahoo.com",true},{ "abc.100@yahoo.com",true}, {"abc.111@yahoo.com",true},
+				{"abc-100@yahoo.com",true},{ "abc.100@yahoo.com.au",true}, {"abc@1.com",true}, {"abc@gmail.com.com",true}, {"abc+100@gmail.com",true},{"abc",false}, {"abc@.com.my",false}, {"abc123@gmail.a",false}, {"abc123@.com",false},{ "abc123@.com.com",false}, {".abc@abc.com",false},
+				{"abc()*@gmail.com",false}, {"abc@%*.com",false}, {"abc...2002@gmail.com",false},{ "abc.@gmail.com",false},{ "abc@abc@gmail.com",false},
+				{"abc@gmail.com.1a",false}, {"abc@gmail.com.aa.au",false}});
+
+	}
+
 	@Test
-	public void giveEmail_whenProper_ShouldReturnTrue(String email) {
-		EmailParameterized validater = new EmailParameterized();
-		boolean result = validater.validateEmail("Patil");
-		Assert.assertTrue(result);
-	}
-	@Test
-	public void giveEmail_whenNotProper_ShouldReturnFalse(String email) {
-		EmailParameterized validater = new EmailParameterized();
-		boolean result = validater.validateEmail("Patil");
-		Assert.assertFalse(result);
-	}
-
-	public static List<String> validEmail() {
-		return Arrays.asList("abc@yahoo.com", "abc-100@yahoo.com", "abc.100@yahoo.com", "abc.111@yahoo.com",
-				"abc-100@yahoo.com", "abc.100@yahoo.com.au", "abc@1.com", "abc@gmail.com.com", "abc+100@gmail.com");
-
-	}
-
-	public static List<String> invalidEmail() {
-		return Arrays.asList("abc", "abc@.com.my", "abc123@gmail.a", "abc123@.com", "abc123@.com.com", ".abc@abc.com",
-				"abc()*@gmail.com", "abc@%*.com", "abc...2002@gmail.com", "abc.@gmail.com", "abc@abc@gmail.com",
-				"abc@gmail.com.1a", "abc@gmail.com.aa.au");
-
+	public void giveEmail_AsperInput_ShouldReturnResult() {
+		System.out.println(email+result);
+		Assert.assertEquals(result,emailParameterized.validateEmail(email));
 	}
 
 }
