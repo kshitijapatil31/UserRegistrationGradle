@@ -33,4 +33,75 @@ public class UserRegistration {
 		Pattern pattern =Pattern.compile(PASSWORD);
 		return pattern.matcher(password).matches();
 	}
-}
+
+/**custom exception**/
+	//firstName
+	public String validateFirstName1(String msg) throws ValidationException{
+		Pattern pattern=Pattern.compile(FIRST_NAME_PATTERN);
+		try {
+			if(msg.length()<=0) {
+				throw new ValidationException("firstName cannot be empty");
+			}
+			if(pattern.matcher(msg).matches()) {
+				return "valid firstname";
+			}
+			return "invalid firstname";
+		}catch(NullPointerException e) {
+			throw new ValidationException("firstName cannot be null");
+		}
+	}
+	
+	//lastName
+		public String validateLastName1(String msg) throws ValidationException{
+			Pattern pattern=Pattern.compile(LAST_NAME_PATTERN);
+			try {
+				if(msg.length()<=0) {
+					throw new ValidationException("lastName cannot be empty");
+				}
+				if(pattern.matcher(msg).matches()) {
+					return "valid lastname";
+				}
+				return "invalid lastname";
+			}catch(NullPointerException e) {
+				throw new ValidationException("lastName cannot be null");
+			}
+		}
+		
+		//Email
+				public String validateEmail1(String msg) throws ValidationException{
+					Pattern pattern=Pattern.compile(EMAIL);
+					try {
+						if(msg.length()<=0) {
+							throw new ValidationException("Email cannot be empty");
+						}
+						if(pattern.matcher(msg).matches()) {
+							return "valid Email";
+						}
+						return "invalid Email";
+					}catch(NullPointerException e) {
+						throw new ValidationException("Email cannot be null");
+					}
+				}
+				
+				//Mobile
+				public String validateMobile1(String msg) throws ValidationException{
+					Pattern pattern=Pattern.compile(MOBILE);
+					try {
+						if(msg.length()<=0) {
+							throw new ValidationException("Mobile cannot be empty");
+						}
+						if(pattern.matcher(msg).matches()) {
+							return "valid Mobile";
+						}
+						return "invalid Mobile";
+					}catch(NullPointerException e) {
+						throw new ValidationException("Mobile cannot be null");
+					}
+				}
+	}
+
+
+
+
+
+
